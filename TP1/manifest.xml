@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC1: uma página web</titulo>
+        <data>2022-02-15</data>
+        <autor>
+            <id>A89615</id>
+            <nome>Sofia Santos</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este primeiro TPC resumiu-se na criação de uma simples página web, usando HTML e CSS.</p>
+        <p>O tema desta página deveria ser um de uma lista gerada pelo professor de palavras começadas pela letra 'j'. De entre as palavras disponíveis, eu escolhi a palavra 'janela'.</p>
+        <!-- <p>Terceiro parágrafo a apontar para o <xref>
+            <url>xml.com</url>
+            <texto>XML</texto>
+        </xref>.</p> -->
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>index.html</url>
+            <texto>Página web</texto>
+        </resultado>
+    </resultados>
+</doc>
