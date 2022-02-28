@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC2: dataset de filmes</titulo>
+        <data>2022-02-22</data>
+        <autor>
+            <id>A89615</id>
+            <nome>Sofia Santos</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Para o segundo TPC, foi-nos pedido que criássemos um servidor web, responsável por representar e servir em páginas web um dataset previamente fornecido, que consiste numa lista de filmes e informação sobre os mesmos.</p>
+        <p>A cada filme deve corresponder um ficheiro .html. Todas estas páginas são depois indexadas num outro ficheiro .html, onde os filmes, ordenados por ordem alfabética, são representados por links para as suas respetivas páginas.</p>
+        <p>Como extra, foi-nos ainda pedido para criar um outro conjunto de páginas, desta vez para mostrar informação sobre os atores que constam do dataset, mais especificamente os filmes em que cada entra, para além de uma página onde todas estas outras estão indexadas.</p>
+        <p>De modo a gerar as páginas, desenvolvi um <xref>
+            <url>gerador.py</url>
+            <texto>script em Python</texto>
+        </xref> responsável por ler o <xref>
+            <url>cinemaATP.json</url>
+            <texto>ficheiro do dataset</texto>
+        </xref> e gerar as páginas HTML para cada filme, ator e os índices.</p>
+        <p>Para além destas tarefas, criei ainda um ficheiro <xref>
+            <url>main.css</url>
+            <texto>CSS</texto>
+        </xref>, usado para decorar as páginas HTML geradas.</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>gerador.py</url>
+            <texto>Script gerador das páginas HTML</texto>
+        </resultado>
+        <resultado>
+            <url>index.html</url>
+            <texto>Página web principal</texto>
+        </resultado>
+        <resultado>
+            <url>main.css</url>
+            <texto>Ficheiro CSS</texto>
+        </resultado>
+    </resultados>
+</doc>
