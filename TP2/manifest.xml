@@ -30,6 +30,10 @@
     </resumo>
     <resultados>
         <resultado>
+            <url>servidor.js</url>
+            <texto>Ficheiro responsável por correr o servidor web</texto>
+        </resultado>
+        <resultado>
             <url>gerador.py</url>
             <texto>Script gerador das páginas HTML</texto>
         </resultado>
