@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC3: escola de música - dataset e representação em servidor web</titulo>
+        <data>2022-03-08</data>
+        <autor>
+            <id>A89615</id>
+            <nome>Sofia Santos</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este terceiro TPC consiste na representação de um dataset relativo a uma escola de música através de um servidor web em Node.js.</p>
+        <p>O dataset, armazenado num ficheiro, é convertido numa API REST através do <xref><texto>json-server</texto><url>https://github.com/typicode/json-server</url></xref>.</p>
+        <p>A partir desta API, o servidor vai buscar a informação necessária para cada página web. Por exemplo, na página relativa aos instrumentos, o servidor faz um pedido GET à API para obter a lista de instrumentos.</p>
+        <p>As páginas são assim geradas de forma dinâmica, não estando a sua informação armazenada diretamente no servidor. A partir do ficheiro <xref><texto>HTML</texto><url>index.html</url></xref> principal, são gerados todos os outros.</p>
+        <p>Como extra, usei o Tailwind CSS para personalizar as páginas web.</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>server.js</url>
+            <texto>Ficheiro usado para correr o servidor web.</texto>
+        </resultado>
+        <resultado>
+            <url>db.json</url>
+            <texto>Ficheiro relativo ao dataset.</texto>
+        </resultado>
+        <resultado>
+            <url>css/main.css</url>
+            <texto>Ficheiro CSS (devido ao uso do Tailwind CSS, é necessário compilar o CSS)</texto>
+        </resultado>
+        <resultado>
+            <url>README.md</url>
+            <texto>Instruções sobre como correr o servidor, a API e compilar o CSS.</texto>
+        </resultado>
+    </resultados>
+</doc>
