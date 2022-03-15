@@ -96,6 +96,15 @@ function aluno(data) {
     return page
 }
 
+function send404(res) {
+    fs.readFile("404.html", function (err, data) {
+        res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'})
+        if(err) res.write("<p>404 page not found</p>")
+        else res.write(data)
+        res.end()
+    })
+}
+
 http.createServer(function (req, res) {
     console.log(req.url)
     if(req.url.endsWith(".css")) {
@@ -120,37 +129,38 @@ http.createServer(function (req, res) {
             if(req.url == "/") {
                 fs.readFile('src/mainPage.html', function (err, data) {
                     page = template.replace("${yield}",data)
+                    if(err) throw "Main page file not found!"
                     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(page)
                     res.end()
                 })
             }
-            else if(req.url == "/alunos") {
+            else if(req.url == "/alunos" || req.url == "/alunos/") {
                 let myPromise = new Promise(alunos)
                 myPromise.then(page => {
                     page = template.replace("${yield}",page)
                     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(page)
                     res.end()
-                }, err => { console.log(err) })
+                }, err => { console.log(err); send404(res) })
             }
-            else if(req.url == "/cursos") {
+            else if(req.url == "/cursos" || req.url == "/cursos/") {
                 let myPromise = new Promise(cursos)
                 myPromise.then(page => {
                     page = template.replace("${yield}",page)
                     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(page)
                     res.end()
-                }, err => { console.log(err) })
+                }, err => { console.log(err); send404(res) })
             }
-            else if(req.url == "/instrumentos") {
+            else if(req.url == "/instrumentos" || req.url == "/instrumentos/") {
                 let myPromise = new Promise(instrumentos)
                 myPromise.then(page => {
                     page = template.replace("${yield}",page)
                     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(page)
                     res.end()
-                }, err => { console.log(err) })
+                }, err => { console.log(err); send404(res) })
             }
             else if(req.url.startsWith("/alunos/") && req.url.split('/').length == 3) {
                 axios.get("http://localhost:3000/alunos/" + req.url.split('/').slice(2)).then(resp => {
@@ -158,16 +168,12 @@ http.createServer(function (req, res) {
                     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(page)
                     res.end()
+                }).catch(error => {
+                    console.log(error)
+                    send404(res)
                 })
             }
-            else {
-                fs.readFile("404.html", function (err, data) {
-                    res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'})
-                    if(err) res.write("<p>404 page not found</p>")
-                    else res.write(data)
-                    res.end()
-                })
-            }
+            else send404(res)
         }
     })
 }).listen(4000, function () {
