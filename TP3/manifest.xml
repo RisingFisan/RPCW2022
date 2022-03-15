@@ -17,7 +17,7 @@
         <p>O dataset, armazenado num ficheiro, é convertido numa API REST através do <xref><texto>json-server</texto><url>https://github.com/typicode/json-server</url></xref>.</p>
         <p>A partir desta API, o servidor vai buscar a informação necessária para cada página web. Por exemplo, na página relativa aos instrumentos, o servidor faz um pedido GET à API para obter a lista de instrumentos.</p>
         <p>As páginas são assim geradas de forma dinâmica, não estando a sua informação armazenada diretamente no servidor. A partir do ficheiro <xref><texto>HTML</texto><url>index.html</url></xref> principal, são gerados todos os outros.</p>
-        <p>Como extra, usei o Tailwind CSS para personalizar as páginas web.</p>
+        <p>Como extra, usei o Tailwind CSS para personalizar as páginas web e criei páginas individuais para cada aluno.</p>
     </resumo>
     <resultados>
         <resultado>

@@ -21,10 +21,10 @@ async function alunos(myResolve, myReject) {
     alunos.forEach(aluno => {
         page += `  <tr class="border-[1px] border-gray-200">
     <td class="border-[1px] border-gray-200 px-1">${aluno.id}</td>
-    <td class="border-[1px] border-gray-200 px-1">${aluno.nome}</td>
+    <td class="border-[1px] border-gray-200 px-1"><a href="http://localhost:4000/alunos/${aluno.id}" class="block">${aluno.nome}</a></td>
     <td class="border-[1px] border-gray-200 px-1">${aluno.curso}</td>
     <td class="border-[1px] border-gray-200 px-1">${aluno.instrumento}</td>
-  </tr>
+  </tr></a>
 `
     })
     page += "</table>"
@@ -85,13 +85,30 @@ async function cursos(myResolve, myReject) {
     myResolve(page)
 }
 
+function aluno(data) {
+    page = `  <div class="text-white px-8">
+    <h2 class="text-2xl pb-6">${data['id']}: ${data['nome']}</h2>
+    <p><b>Data de nascimento:</b> ${data['dataNasc']}</p>
+    <p><b>Curso:</b> ${data['curso']} (${data['anoCurso']}º ano)</p>
+    <p><b>Intrumento:</b> ${data['instrumento']}</p>
+  </div>
+`
+    return page
+}
+
 http.createServer(function (req, res) {
     console.log(req.url)
     if(req.url.endsWith(".css")) {
         fs.readFile(req.url.slice(1), function (err, data) {
             res.writeHead(200, {'Content-Type': 'text/css; charset=utf-8'})
-            if (err) res.write("404")
-            else res.write(data)
+            if (err) {
+                res.writeHead(404, {'Content-Type': 'text/css; charset=utf-8'})
+                res.write("<p>CSS file could not be loaded</p>")
+            }
+            else {
+                res.writeHead(200, {'Content-Type': 'text/css; charset=utf-8'})
+                res.write(data)
+            }
             res.end()
         })
         return
@@ -99,11 +116,11 @@ http.createServer(function (req, res) {
     fs.readFile('./index.html', function (err, data) {
         if (err) throw "Index file not found!"
         else {
-            res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
             template = data.toString('utf-8')
             if(req.url == "/") {
                 fs.readFile('src/mainPage.html', function (err, data) {
                     page = template.replace("${yield}",data)
+                    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(page)
                     res.end()
                 })
@@ -112,6 +129,7 @@ http.createServer(function (req, res) {
                 let myPromise = new Promise(alunos)
                 myPromise.then(page => {
                     page = template.replace("${yield}",page)
+                    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(page)
                     res.end()
                 }, err => { console.log(err) })
@@ -120,6 +138,7 @@ http.createServer(function (req, res) {
                 let myPromise = new Promise(cursos)
                 myPromise.then(page => {
                     page = template.replace("${yield}",page)
+                    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(page)
                     res.end()
                 }, err => { console.log(err) })
@@ -128,9 +147,26 @@ http.createServer(function (req, res) {
                 let myPromise = new Promise(instrumentos)
                 myPromise.then(page => {
                     page = template.replace("${yield}",page)
+                    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                     res.write(page)
                     res.end()
                 }, err => { console.log(err) })
+            }
+            else if(req.url.startsWith("/alunos/") && req.url.split('/').length == 3) {
+                axios.get("http://localhost:3000/alunos/" + req.url.split('/').slice(2)).then(resp => {
+                    page = template.replace("${yield}", aluno(resp.data))
+                    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                    res.write(page)
+                    res.end()
+                })
+            }
+            else {
+                fs.readFile("404.html", function (err, data) {
+                    res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'})
+                    if(err) res.write("<p>404 page not found</p>")
+                    else res.write(data)
+                    res.end()
+                })
             }
         }
     })
