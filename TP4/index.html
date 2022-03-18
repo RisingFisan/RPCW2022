@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" type="image/svg-xml" href="notepad.svg">
+  <title>To Do List</title>
+</head>
+<body class="bg-zinc-800 font-sans">
+  <div class="flex flex-col">
+    <div class="px-24 md:px-12 xl:px-24 py-10 border-b-2 bg-zinc-700 border-zinc-500 text-white">
+      <div class="flex justify-around items-center gap-5 flex-col lg:flex-row">
+        <div class="flex items-center gap-8">
+          <img class="w-32" src="notepad.svg">
+          <p class="text-5xl w-32 whitespace-pre-wrap mr-8 font-bold font-title">To Do List</p>
+        </div>
+        <form action="/tasks" method="POST" class="flex gap-6 lg:gap-12">
+          <div class="flex gap-4 xl:gap-12 flex-col xl:flex-row">
+            <div class="flex flex-col w-min">
+              <label for="title">Title
+              <input type="text" id="title" name="title" class="bg-transparent border-0 border-b-2 placeholder:text-zinc-500" placeholder="Drink water!"/>
+            </div>
+            <div class="flex flex-col">
+              <label for="title">Description</label>
+              <textarea id="descrition" name="description" cols="28" class="bg-zinc-600 border-0 placeholder:text-zinc-400" placeholder="At least 2 liters a day..."></textarea>
+            </div>
+          </div>
+          <input type="hidden" id="status" name="status" value="pending">
+          <input type="submit" value="Create new task!" class="hover:cursor-pointer bg-green-600 hover:bg-green-700 py-3 px-6 rounded-2xl whitespace-normal break-words w-36 self-center font-bold text-xl"/>
+        </form>
+      </div>
+    </div>
+    <div class="flex flex-col xl:flex-row">
+      <div class="w-full px-16 py-6 text-white">
+        <p class="text-4xl font-bold">In progress</p>
+        ${pending}
+      </div>
+      <div class="w-full px-16 py-6 text-white">
+        <p class="text-4xl font-bold">Completed</p>
+        ${completed}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

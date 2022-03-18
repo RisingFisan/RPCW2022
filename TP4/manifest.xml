@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC4: To Do List - servidor web dinâmico</titulo>
+        <data>2022-03-15</data>
+        <autor>
+            <id>A89615</id>
+            <nome>Sofia Santos</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Para o quarto TPC, foi-nos pedido que criássemos um servidor web dinâmico com recurso a Node.js e json-server para a API.</p>
+        <p>O servidor consiste numa Single Page Application (SPA) na qual é possível consultar as tarefas por concluir, as tarefas já concluídas e definir novas tarefas.</p>
+        <p>Para além disso, é possível editar tarefas já existentes, marcar tarefas ativas como concluídas e remover tarefas concluídas.</p>
+        <p>Os pedidos à API são feitos através do axios, sendo que a API está armazenada num ficheiro JSON.</p>
+        <p>O servidor utiliza Tailwind para o CSS, sendo por isso preciso compilar o CSS.</p>
+        <p>Como extra, tentei colocar um design responsivo na página, de modo a que possa ser utilizada também em dispositivos móveis.</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>index.js</url>
+            <texto>Ficheiro usado para correr o servidor web.</texto>
+        </resultado>
+        <resultado>
+            <url>db.json</url>
+            <texto>Ficheiro usado pelo json-server para gerar a API.</texto>
+        </resultado>
+        <resultado>
+            <url>css/tailwind.css</url>
+            <texto>Ficheiro CSS</texto>
+        </resultado>
+        <resultado>
+            <url>static.js</url>
+            <texto>Módulo usado para servir ficheiros estáticos, disponibilizado pelo docente.</texto>
+        </resultado>
+        <resultado>
+            <url>README.md</url>
+            <texto>Instruções sobre como correr o servidor, a API e compilar o CSS.</texto>
+        </resultado>
+    </resultados>
+</doc>

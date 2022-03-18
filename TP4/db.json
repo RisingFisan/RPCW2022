@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 0,
+      "status": "completed",
+      "title": "Hello world",
+      "description": "This is a test"
+    },
+    {
+      "title": "Eat pizza 🍕",
+      "description": "At least three times a week! 😋",
+      "status": "pending",
+      "id": 2
+    },
+    {
+      "title": "Finish this homework",
+      "description": "By next tuesday, march 22nd",
+      "status": "pending",
+      "id": 3
+    },
+    {
+      "title": "Lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "status": "completed",
+      "id": 4
+    }
+  ]
+}
