@@ -18,4 +18,4 @@ Depois, para correr o servidor web, foram criados alguns *scripts* no ficheiro [
 
 > `npm run start` - inicia o servidor web na porta 4000 (é necessário compilar o CSS primeiro)
 
-> `npm run dev` - inicial o servidor web na porta 4000 e auto-compila o CSS enquanto o servidor estiver a correr
+> `npm run dev` - inicia o servidor web na porta 4000 e auto-compila o CSS enquanto o servidor estiver a correr
