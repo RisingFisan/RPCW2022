@@ -1,0 +1,30 @@
+extends layout 
+
+block content
+  h1.text-3xl.text-blue-500.mb-8 Insere uma música nova:
+  form(class="text-lg lg:w-1/2" action="/musicas" method="POST")
+    div(class="grid grid-cols-[min-content_1fr] gap-x-4 items-center")
+      p.font-light Título
+      input(type='text' name='tit' value='' class="font-bold bg-transparent")
+      p.font-light Intérprete(s)
+      input(type='text' name='musico' value='' class='font-bold bg-transparent')
+      p.font-light Província
+      input(type='text' name='prov' value='' class='font-bold bg-transparent')
+      p.font-light Local
+      input(type='text' name='local' value='' class='font-bold bg-transparent')
+      p.font-light Instrumentos
+      input(type='text' name='inst' value='' class='font-bold bg-transparent')
+      p.font-light Duração
+      input(type='text' name='duracao' value='' class='font-bold bg-transparent')
+      p.font-light Observações
+      input(type='text' name='obs' value='' class='font-bold bg-transparent')
+      p.font-light Ficheiro
+      input(type='text' name='file' value='' class='font-bold bg-transparent')
+      p.font-light.whitespace-nowrap Tipo do ficheiro
+      input(type='text' name='fileType' value='' class='font-bold bg-transparent')
+    div.flex.justify-center.items-center.mt-4
+      button(type="submit" class="bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-full") Enviar
+
+  a(href="/musicas" title="Voltar").fixed.bottom-6.right-6.w-20.h-20.bg-blue-600.rounded-full.flex.items-center.justify-center.shadow-md.shadow-blue-900
+    svg(xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2")
+      path(stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7")

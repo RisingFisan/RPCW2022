@@ -1,0 +1,36 @@
+extends layout 
+
+block content
+  div.space-y-10
+    div.inline-flex.gap-8
+      div.bg-white.shadow-lg.shadow-black.flex-shrink-0.self-start
+        img(src='/images/note.png' class="w-48")
+      div.flex.justify-center.flex-col.gap-6
+        p.font-bold.text-4xl #{musica.tit}
+        div
+          p.font-bold.text-2xl #{musica.musico ? musica.musico : 'Intérprete(s) desconhecido(s)'}
+          p.text-lg #{musica.duracao} minutos
+
+    div(class="grid grid-cols-[min-content_1fr] gap-x-4 text-lg")
+      p.font-light Título
+      p.font-bold  #{musica.tit ? musica.tit : "N/A"}
+      p.font-light Intérprete(s)
+      p.font-bold  #{musica.musico ? musica.musico : "N/A"}
+      p.font-light Província
+      p.font-bold  #{musica.prov ? musica.prov : "N/A"}
+      p.font-light Local
+      p.font-bold  #{musica.local ? musica.local : "N/A"}
+      p.font-light Instrumentos
+      p.font-bold  #{musica.inst ? musica.inst : "N/A"}
+      p.font-light Duração
+      p.font-bold  #{musica.duracao ? musica.duracao : "N/A"}
+      p.font-light Observações
+      p.font-bold  #{musica.obs ? musica.obs : "N/A"}
+      p.font-light Ficheiro
+      p.font-bold  #{musica.file ? musica.file : "N/A"}
+      p.font-light.whitespace-nowrap Tipo do ficheiro
+      p.font-bold  #{musica.fileType ? musica.fileType : "N/A"}
+
+  a(href="/musicas" title="Voltar").fixed.bottom-6.right-6.w-20.h-20.bg-blue-600.rounded-full.flex.items-center.justify-center.shadow-md.shadow-blue-900
+    svg(xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2")
+      path(stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7")

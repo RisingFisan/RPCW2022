@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  ul(class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3").gap-6.items-start.pb-24
+    for musica in musicas
+      li.list-none.bg-blue-600.rounded-2xl
+        a(class="block bg-[url('/images/note.png')] bg-right bg-contain bg-no-repeat m-4" href=`/musicas/${musica.id}`)
+          div(class="grid grid-cols-[min-content_1fr] gap-x-4")
+            p.font-light Título
+            p.font-bold  #{musica.tit}
+            p.font-light Intérprete(s)
+            p.font-bold  #{musica.musico ? musica.musico : 'N/A'}
+            p.font-light Província
+            p.font-bold  #{musica.prov}
+
+  form(action="/musicas").fixed.bottom-6.left-6.bg-green-500.rounded-full.flex.justify-center.items-center.gap-8.bg-opacity-90.shadow-md.shadow-green-900
+    button(type="submit" class="hover:bg-green-700").w-20.h-20.bg-green-600.rounded-full.flex.items-center.justify-center.shadow-md.shadow-green-900
+      svg(xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2")
+        path(stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z")
+    select(name="prov" class="bg-transparent border-0 text-xl")
+      option(value="" selected disabled hidden) #{prov ? prov : "Província"}
+      option(value="").text-black Todas 
+      option(value="Alentejo").text-black Alentejo 
+      option(value="Beira Baixa").text-black Beira Baixa
+      option(value="Minho").text-black Minho
+      option(value="Estremadura").text-black Estremadura
+      option(value="Alto Alentejo").text-black Alto Alentejo
+      option(value="Douro Litoral").text-black Douro Litoral
+
+  
+
+  div(class="left-1/2 -translate-x-1/2 bg-opacity-90").fixed.bottom-6.flex.justify-center.gap-8.items-center.bg-purple-500.rounded-full.shadow-md.shadow-purple-900
+    if page > 1
+      a(href=`/musicas?page=${page - 1}${prov != "" ? "&prov=" + prov : ""}` title="Página anterior" class="bg-purple-600 hover:bg-purple-700").w-20.h-20.rounded-full.flex.items-center.justify-center
+        svg(xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2")
+          path(stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7")
+    else
+      div.w-10.h-20
+    p #{page}/#{page_max}
+    if page < page_max
+      a(href=`/musicas?page=${page + 1}${prov != "" ? "&prov=" + prov : ""}` title="Página seguinte" class="bg-purple-600 hover:bg-purple-700").w-20.h-20.bg-purple-600.rounded-full.flex.items-center.justify-center.shadow-md.shadow-purple-900
+        svg(xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2")
+          path(stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7")
+    else
+      div.w-10.h-20
+
+  a(href="/musicas/inserir" title="Inserir uma música nova" class="hover:bg-yellow-700").fixed.bottom-6.right-6.w-20.h-20.bg-yellow-600.rounded-full.flex.items-center.justify-center.shadow-md.shadow-yellow-900
+    svg(xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2")
+      path(stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4")

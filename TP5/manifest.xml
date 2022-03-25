@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC5: Repositório de Músicas</titulo>
+        <data>2022-03-22</data>
+        <autor>
+            <id>A89615</id>
+            <nome>Sofia Santos</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>O quinto TPC consistiu na criação de um servidor web, com recurso ao Express, uma framework web para JavaScript</p>
+        <p>O servidor tem como objetivo mostrar ao utilizador as músicas existentes numa base de dados, com a opção de filtrar a lista de músicas por província.</p>
+        <p>Existe ainda a opção de adicionar músicas novas à base de dados.</p>
+        <p>A base de dados deste servidor consiste num ficheiro JSON e no comando json-server que disponibiliza o mesmo numa API.</p>
+        <p>Para preparar o ficheiro JSON para ser usado pelo json-server, criei um pequeno script em Python que atribui a cada música um ID. Assim torna-se mais fácil fazer pedidos de músicas individuais à API.</p>
+        <p>O servidor utiliza ainda Tailwind para o CSS, sendo por isso preciso compilar o CSS.</p>
+        <p>Como extra, programei uma funcionalidade que permite navegar a lista de músicas por páginas.</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>arq-son-EVO.json</url>
+            <texto>Ficheiro usado pelo json-server para gerar a API.</texto>
+        </resultado>
+        <resultado>
+            <url>id_giver.py</url>
+            <texto>Script usado para preparar o ficheiro JSON para a API.</texto>
+        </resultado>
+        <resultado>
+            <url>README.md</url>
+            <texto>Instruções sobre como correr o servidor, a API e compilar o CSS.</texto>
+        </resultado>
+    </resultados>
+</doc>
