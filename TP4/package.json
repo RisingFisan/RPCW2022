@@ -13,7 +13,9 @@
   "author": "Sofia Santos",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.26.1"
+    "axios": "^0.26.1",
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.0",
