@@ -30,7 +30,15 @@ router.get('/musicas/inserir', function(req, res, next) {
 router.get('/musicas/:id', function(req, res, next) {
   axios.get('http://localhost:3000/musicas/' + req.params.id).then(resp => {
     const musica = resp.data
-    res.render('musica', {musica: musica})
+    res.render('musica', {musica: musica, title: musica.tit})
+  }).catch(err => {
+    res.render('error', {title: "ERROR", message: err})
+  })
+})
+
+router.get('/musicas/:id/delete', function(req, res, next) {
+  axios.delete('http://localhost:3000/musicas/' + req.params.id).then(resp => {
+    res.redirect('/musicas')
   }).catch(err => {
     res.render('error', {title: "ERROR", message: err})
   })

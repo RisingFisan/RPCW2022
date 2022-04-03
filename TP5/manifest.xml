@@ -19,7 +19,7 @@
         <p>A base de dados deste servidor consiste num ficheiro JSON e no comando json-server que disponibiliza o mesmo numa API.</p>
         <p>Para preparar o ficheiro JSON para ser usado pelo json-server, criei um pequeno script em Python que atribui a cada música um ID. Assim torna-se mais fácil fazer pedidos de músicas individuais à API.</p>
         <p>O servidor utiliza ainda Tailwind para o CSS, sendo por isso preciso compilar o CSS.</p>
-        <p>Como extra, programei uma funcionalidade que permite navegar a lista de músicas por páginas.</p>
+        <p>Como extra, programei uma funcionalidade que permite navegar a lista de músicas por páginas e a possibilidade de eliminar músicas da base de dados.</p>
     </resumo>
     <resultados>
         <resultado>
