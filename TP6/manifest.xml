@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC6: Sistema de Armazenamento de Ficheiros</titulo>
+        <data>2022-03-29</data>
+        <autor>
+            <id>A89615</id>
+            <nome>Sofia Santos</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Para o sexto TPC, foi-nos pedido que criássemos uma plataforma em Express (framework web para Node.js) capaz de armazenar ficheiros carregados pelo utilizador.</p>
+        <p>Os ficheiros em si são armazenados numa diretoria ('./file_storage') e a informação sobre os mesmos é mantida numa base de dados MongoDB.</p>
+        <p>Na página inicial, é possível visualizar a lista dos ficheiros existentes, juntamente com alguma informação sobre os mesmos, carregar ficheiros novos ou apagar ficheiros existentes.</p>
+        <p>Cada ficheiro tem, para além de informação intrínseca como tamanho, mimetype ou nome, uma descrição sobre o mesmo, definida pelo utilizador aquando do seu carregamento.</p>
+        <p>O CSS está definido através do Tailwind, sendo por isso necessário compilar o CSS antes de correr o servidor.</p>
+        <p>Existe ainda uma funcionalidade extra que permite abrir cada ficheiro e, no caso de ser uma imagem, visualizá-la no browser.</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>./file_storage/</url>
+            <texto>Diretoria onde são armazenados os ficheiros carregados na aplicação.</texto>
+        </resultado>
+        <resultado>
+            <url>./models/file.js</url>
+            <texto>Ficheiro onde está definida a estrutura de cada ficheiro na base de dados.</texto>
+        </resultado>
+        <resultado>
+            <url>./controllers/fileController.js</url>
+            <texto>Controlador, responsável por efetuar a comunicação entre o modelo (base de dados) e a aplicação em si.</texto>
+        </resultado>
+        <resultado>
+            <url>README.md</url>
+            <texto>Instruções sobre como correr o servidor, a API e compilar o CSS.</texto>
+        </resultado>
+    </resultados>
+</doc>

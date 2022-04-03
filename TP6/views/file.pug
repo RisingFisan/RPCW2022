@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  div.bg-slate-700.min-h-screen.text-white
+    div(class="w-1/2 mx-auto py-24").flex.flex-col.justify-center
+      div.flex.justify-between.font-light.text-xl
+        p= file.name
+        p= file.size < 1000000 ? (file.size / 1000).toFixed(3) + " KB" : (file.size / 1000000).toFixed(3) + " MB"
+      img(src='/file_storage/' + file._id)

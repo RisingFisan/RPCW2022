@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  div.bg-slate-700.min-h-screen
+    div.bg-zinc-800.text-white.h-fit
+      form(action="/files", method="post" enctype="multipart/form-data" class="h-full flex flex-col md:flex-row justify-center items-center py-5 gap-6 px-10")
+        div.flex.gap-6.justify-center.items-center
+          label(class="flex flex-col items-center justify-center px-6 self-stretch bg-transparent rounded-lg shadow-md tracking-wide uppercase border cursor-pointer hover:bg-purple-800 border-dashed")
+              svg(class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")
+                  path(d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z")
+              //- span(class="mt-2 text-base leading-normal") Select a file
+              input(type='file' name="myFile" class="mt-2 text-base leading-normal w-52")
+          div.flex.flex-col.gap-1
+            label.font-light Add a description...
+            textarea(name="description" class="resize-none bg-gray-500 text-black rounded-md p-1 px-2 shadow-md") 
+        div(class="md:w-[1px] h-[1px] md:h-auto self-stretch bg-gray-400")
+        button(type="submit" class="border-white border px-4 py-3 shadow-md rounded-lg tracking-wide h-full hover:bg-purple-800") 
+          div.flex.flex-col.justify-center.items-center.uppercase
+            svg(class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg")
+              path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7")
+            p.mt-2 Upload new file
+    div.text-white.flex.flex-col.items-center.mt-8.gap-12.px-10
+      h1.text-4xl.font-bold Files currently stored in the database
+      table(class="table-fixed w-full lg:w-3/4 2xl:w-3/5")
+        tr.border-2.bg-slate-800
+          th(class="w-1/4").border-2 File Name
+          th(class="w-1/2").border-2 Description
+          th.border-2 Mimetype
+          th.border-2.px-2 Delete
+        for file, i in files
+          tr(class="last:border-b" + (i % 2 == 0 ? " bg-slate-600" : ""))
+            td.border-x.pr-3
+             a(href="/files/" + file._id, class="text-purple-400")= file.name
+            td.border-x.pr-3= file.description
+            td.border-x.pr-3= file.mimetype
+            td.border-x.text-center
+              a(href=`/files/${file._id}/delete`) ❌
