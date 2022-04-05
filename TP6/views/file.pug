@@ -6,4 +6,4 @@ block content
       div.flex.justify-between.font-light.text-xl
         p= file.name
         p= file.size < 1000000 ? (file.size / 1000).toFixed(3) + " KB" : (file.size / 1000000).toFixed(3) + " MB"
-      img(src='/file_storage/' + file._id)
+      img(src='/file_storage/' + file._id, alt=file.description)
