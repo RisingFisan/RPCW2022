@@ -1,0 +1,110 @@
+extends layout
+
+block content
+  div(class="mx-[10%] my-8").flex.flex-col.gap-16
+    div.pl-8.pt-8
+      h1.text-3xl
+        span.font-light.text-slate-200=type + ": "
+        span.font-bold #{title} [#{classe['codigo']}]
+
+    div.categoria
+      div
+        p.font-light.text-slate-200 Estado
+        case classe['status']
+          when 'A'
+            p.text-xl Ativ#{type.endsWith('ão') ? 'a' : 'o'} ✅
+
+      div
+        p.font-light.text-slate-200 Descrição
+        p.text-xl=classe['descricao']
+
+      if classe['nivel'] == '3'
+        div
+          p.font-light.text-slate-200 Tipo de processo
+          p.text-xl=classe['tipoProc']
+
+      if child_type != undefined && Object.keys(classe['filhos']).length > 0
+        div
+          p.font-light.text-slate-200=child_type
+          ul.flex.flex-col.gap-2.list-disc.indent-2.pl-4
+            for subclasse in classe['filhos']
+              li
+                a(href=subclasse['codigo'] class="inline-block")
+                  p.text-xl.underline
+                    | #{subclasse['titulo']}
+                    | [#{subclasse['codigo']}]
+
+    div.categoria
+      div
+        p.font-light.text-slate-200 Notas de Aplicação
+        ul.list-disc.indent-2.pl-4
+          for nota in classe['notasAp']
+            li=nota['nota']
+
+      div
+        p.font-light.text-slate-200 Notas de Exclusão
+        ul.list-disc.indent-2.pl-4
+          for nota in classe['notasEx']
+            li=nota['nota']
+  
+      div
+        p.font-light.text-slate-200 Termos de Índice
+        ul.list-disc.indent-2.pl-4
+          for ind in classe['termosInd']
+            li=ind['termo']
+
+    if classe['nivel'] == "3"
+      div
+        p.font-light.text-2xl.tracking-tight.text-slate-200.mb-3 Processos relacionados
+        div.categoria
+          div
+            p.font-light.text-slate-200 Cruzado com
+            ul.list-disc.indent-2.pl-4
+              for rel in classe['processosRelacionados']
+                if rel['idRel'] == 'eAntecessorDe'
+                  li
+                    a(href=rel['codigo'] class="inline-block")
+                      p.underline
+                        | #{rel['titulo']}
+                        | [#{rel['codigo']}]
+
+          div
+            p.font-light.text-slate-200 Complemento de
+            ul.list-disc.indent-2.pl-4
+              for rel in classe['processosRelacionados']
+                if rel['idRel'] == 'eComplementarDe'
+                  li
+                    a(href=rel['codigo'] class="inline-block")
+                      p.underline
+                        | #{rel['titulo']}
+                        | [#{rel['codigo']}]
+
+          div
+            p.font-light.text-slate-200 Suplemento de
+            ul.list-disc.indent-2.pl-4
+              for rel in classe['processosRelacionados']
+                if rel['idRel'] == 'eSuplementoDe'
+                  li
+                    a(href=rel['codigo'] class="inline-block")
+                      p.underline
+                        | #{rel['titulo']}
+                        | [#{rel['codigo']}]
+
+          div
+            p.font-light.text-slate-200 Suplemento para
+            ul.list-disc.indent-2.pl-4
+              for rel in classe['processosRelacionados']
+                if rel['idRel'] == 'eSuplementoPara'
+                  li
+                    a(href=rel['codigo'] class="inline-block")
+                      p.underline
+                        | #{rel['titulo']}
+                        | [#{rel['codigo']}]
+
+  a(href="/" + (Object.keys(classe['pai']).length === 0 ? '' : classe['pai']['codigo'])).fixed.bottom-10.left-10.block.bg-blue-700.rounded-full.shadow-md.shadow-blue-800.p-4
+    svg(class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg")
+      path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7")
+    
+  a(href="/").fixed.bottom-10.right-10.block.bg-blue-700.rounded-full.shadow-md.shadow-blue-800.p-4
+    svg(class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg")
+      path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6")

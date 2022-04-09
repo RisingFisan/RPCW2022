@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC7: Catálogo CLAV</titulo>
+        <data>2022-04-05</data>
+        <autor>
+            <id>A89615</id>
+            <nome>Sofia Santos</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este sétimo TPC consistiu no desenvolvimento de uma aplicação em Node.js, recorrendo à framework Express, na qual fosse possível consultar o catálogo dos processos da adminstração pública portuguesa.</p>
+        <p>Para tal, recorre-se à API do projeto CLAV, na qual estão armazenados estes processos, em formato de classes.</p>
+        <p>Na aplicação, é possível ver, na página inicial, uma lista de todas as funções existentes.</p>
+        <p>A partir daqui, é possível navegar por entre as classes, sendo que cada classe, para além de informação sobre si mesma, contém referências para o seu ascendente e os seus descendentes, permitindo a navegação pelas classes como uma árvore.</p>
+        <p>Os processos possuem ainda uma lista de processos relacionados aos mesmos.</p>
+        <p>Em cada página de classe, existe um botão que permite voltar à página inicial.</p>
+        <p>O CSS está definido através do Tailwind, sendo por isso necessário compilar o CSS antes de correr o servidor.</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>http://clav-api.di.uminho.pt/v2/docs/</url>
+            <texto>Documentação da API da CLAV.</texto>
+        </resultado>
+        <resultado>
+            <url>./bin/www</url>
+            <texto>Ficheiro base da aplicação Express.</texto>
+        </resultado>
+        <resultado>
+            <url>README.md</url>
+            <texto>Instruções sobre como correr o servidor e compilar o CSS.</texto>
+        </resultado>
+    </resultados>
+</doc>
