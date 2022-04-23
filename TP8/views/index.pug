@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  script(src="/javascripts/myPara.js")
+  div(class="bg-sky-400 p-12")
+    div(class="text-5xl font-mono font-black pb-10 xl:absolute")
+      h1 Parágrafos
+    form(id="myParaForm").flex.justify-center.gap-12
+      div.flex.flex-col.w-min
+        textarea(name="para" id="paraText" placeholder="Parágrafo..." class="resize-none h-24 w-64 py-1 px-2 rounded-md shadow-md shadow-sky-900")
+      input(type="button" value="Inserir novo parágrafo" id="addPara" class="bg-sky-800 text-white rounded-lg hover:bg-sky-700 self-center tracking-wide font-bold text-xl px-4 py-2 w-40 whitespace-normal cursor-pointer shadow-sm shadow-black")
+  div(class="px-[20%] py-10")
+    ul(id="paraList" class="flex flex-col")

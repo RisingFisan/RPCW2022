@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC8: Lista de Parágrafos</titulo>
+        <data>2022-04-19</data>
+        <autor>
+            <id>A89615</id>
+            <nome>Sofia Santos</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Para este oitavo TPC, foi-nos pedido que expandíssemos as funcionalidades de uma página criada na aula, na qual é possível visualizar e adicionar parágrafos a uma lista.</p>
+        <p>Esta lista está armazenada numa base de dados MongoDB ligada a uma API. A página web utiliza o jQuery para ir buscar dados à API.</p>
+        <p>Por uma questão de simplicidade, tanto a API como a página web foram desenvolvidas no mesmo projeto em Express, contudo, são completamente independentes uma da outra.</p>
+        <p>As funcionalidades a acrescentar consistem na possibilidade de editar parágrafos já existentes e de remover parágrafos da lista e da base de dados.</p>
+        <p>Assim, o código jQuery deve ser capaz de editar a página e, ao mesmo tempo, de enviar pedidos para a API, de modo a sincronizar as duas versões da lista.</p>
+        <p>Através do jQuery, é ainda possível definir esta aplicação como uma Single-Page Application (SPA), o que a torna muito mais eficiente.</p>
+        <p>O CSS está definido através do Tailwind, sendo por isso necessário compilar o CSS antes de correr o servidor.</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>./views/index.pug</url>
+            <texto>Template da página principal da aplicação, apenas contém a informação que não será dinamicamente gerada.</texto>
+        </resultado>
+        <resultado>
+            <url>./public/javascripts/myPara.js</url>
+            <texto>Script jQuery responsável por atualizar dinamicamente a página e fazer pedidos à API.</texto>
+        </resultado>
+        <resultado>
+            <url>./controllers/paraController.js</url>
+            <texto>Controlador, responsável por efetuar a comunicação entre o modelo (base de dados) e a API.</texto>
+        </resultado>
+        <resultado>
+            <url>./models/para.js</url>
+            <texto>Modelo que representa a estrutura de um parágrafo na base de dados.</texto>
+        </resultado>
+        <resultado>
+            <url>README.md</url>
+            <texto>Instruções sobre como correr o servidor, a API e compilar o CSS.</texto>
+        </resultado>
+    </resultados>
+</doc>
