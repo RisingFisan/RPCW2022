@@ -1,3 +1,4 @@
 [submodule "Projeto"]
 	path = Projeto
 	url = https://github.com/carolinavc99/Projeto
+	ignore = dirty
