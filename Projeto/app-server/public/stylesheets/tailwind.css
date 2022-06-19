@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px theme('colors.slate.500') inset;
+    -webkit-text-fill-color: white !important;
+}
+
+.btn-template {
+    @apply px-4 py-2 rounded-xl shadow-md text-lg md:text-xl transition-colors duration-200 break-words;
+}
+
+.btn {
+    @apply btn-template bg-violet-600 hover:bg-violet-700;
+}
+
+.btn-red {
+    @apply btn-template bg-red-600 hover:bg-red-700;
+}
+
+.tooltip {
+    @apply relative inline-block cursor-pointer select-none ;
+}
+
+.tooltip .tooltiptext {
+    @apply invisible bg-white text-black text-center rounded-md px-3 py-1 w-max text-sm absolute z-10 top-0 -translate-y-full -translate-x-1/2 md:translate-x-0;
+}
+
+.tooltip:hover .tooltiptext {
+    @apply visible;
+}

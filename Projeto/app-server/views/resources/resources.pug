@@ -1,0 +1,44 @@
+extends ../sidebar
+
+block vars
+  - var page = global ? 1 : (userpage == user.username ? 2 : -1)
+
+block mainPage
+  h1.text-center.text-3xl.font-bold= "Recursos" + (global ? "" : " de " + userpage) 
+
+  if global
+    div.bg-slate-700.px-4.py-2.rounded-xl.flex.justify-center
+      form.flex.items-center.gap-2(action="/resources" class="flex-col md:flex-row")
+        div.flex.gap-2
+          label(for="tipo" class="font-light") Tipo:
+          select(name="tipo" class="px-1 bg-slate-500")
+            option(selected=(tipo == "") value="") ---
+            option(selected=(tipo == "teste-exame") value="teste-exame") Teste/Exame
+            option(selected=(tipo == "ficha") value="ficha") Ficha 
+            option(selected=(tipo == "slides") value="slides") Slides
+            option(selected=(tipo == "manual") value="manual") Manual
+            option(selected=(tipo == "projeto") value="projeto") Projeto
+            option(selected=(tipo == "relatorio") value="relatorio") Relatório
+            option(selected=(tipo == "tese") value="tese") Tese
+            option(selected=(tipo == "outro") value="outro") Outro
+        div.self-stretch.bg-slate-500(class="h-[1px] md:h-auto w-auto md:w-[1px]")
+        div.flex.gap-2
+          input(type="text", name="q" class="bg-slate-500 rounded-md px-1" value=q)
+          button(type="submit") 
+            svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor")
+              path(fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd")
+
+  ul.flex.flex-col.items-stretch
+    each resource in resources
+      li.bg-slate-800(class="border-y border-slate-500 first:rounded-t-md first:border-t-0 last:rounded-b-md last:border-b-0")
+        a.block.px-4.py-2.flex.justify-between(href="/resources/" + resource._id)
+          div
+            p.font-bold.text-xl= resource.title
+            p.font-light.text-sm= resource.authors.join(', ')
+          div.flex.flex-col.items-end
+            p.text-right= typePrettier(resource.resourceType)
+            p.text-right= (resource.semester == 0 ? "" : resource.semester + "º semestre") + ` ${resource.academicYearStart}/${(resource.academicYearStart + 1).toString().slice(-2)}`
+            p.font-light.text-sm.text-right Adicionado
+              if global
+                = " por " + resource.submitter
+              = " em " + resource.dateUploaded.split('T')[0]
